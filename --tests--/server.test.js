@@ -22,22 +22,11 @@ describe("Testing APIT Errors", () => {
     expect(respond.status).toBe(404);
   });
 
-
-  //500 Testing if the query is a  name :if no name in the query string
-  test("if no name in the query string", async () => {
-    const respond = await mockRequest.get("/person");
-    expect(respond.status).toEqual(500);
-  });
-
-  //200 Testing if the if the name is in the query string:
-  test("Is the type of query string", async () => {
+  
+   //check if when given a name in the query string, the output object is correct
+   test("Is the output is correct", async () => {
     const respond = await mockRequest.get("/person?name=hanin");
-    expect(respond.status).toEqual(200);
+    expect(respond.body.name).toEqual("hanin");
   });
-
-  //check if when given a name in the query string, the output object is correct
-  test("Is the output is correct", async () => {
-    const respond = await mockRequest.get("/person?name=hanin");
-    expect(respond.body.name).toEqual('hanin');
-  });
+ 
 });
