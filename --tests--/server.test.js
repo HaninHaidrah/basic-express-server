@@ -16,6 +16,13 @@ describe("Testing APIT Errors", () => {
     expect(respond.status).toBe(404);
   });
 
+  // Testing 404 on a bad method
+  test("Is the route is existed ", async () => {
+    const respond = await mockRequest.post("/person");
+    expect(respond.status).toBe(404);
+  });
+
+
   //500 Testing if the query is a  name :if no name in the query string
   test("if no name in the query string", async () => {
     const respond = await mockRequest.get("/person");
@@ -31,7 +38,6 @@ describe("Testing APIT Errors", () => {
   //check if when given a name in the query string, the output object is correct
   test("Is the output is correct", async () => {
     const respond = await mockRequest.get("/person?name=hanin");
-    console.log(respond.body,'PP');
     expect(respond.body.name).toEqual('hanin');
   });
 });

@@ -18,10 +18,8 @@ app.get('/person',validator,(req,res)=>{
     
     // const name=req.query;
     const outPut= req.query
-    
-     console.log(res)
+
     res.status(200).json(outPut)
-    // console.log(res.client)
 
 }) 
 
